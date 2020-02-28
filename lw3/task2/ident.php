@@ -7,9 +7,9 @@ function getGETParameter($key)
 $id = getGETParameter('identifier');
 $space = ' ';
 $num = array('1'-'0');
+echo $ch;
 $errSp = false;
 $errFNum = false;
-$errUnCh = false;
 if (strpos($id, $space) !== false)
 {
 	$errSp = true;  
@@ -28,6 +28,10 @@ else
 if ($errSp == true)
 {
 	echo 'не должно быть пробелов'."\n";
+}
+if ($errUnCh == true)
+{
+	echo 'встречаются запрещенные символы';
 }
 if ($errFNum == true)
 {
