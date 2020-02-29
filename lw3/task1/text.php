@@ -8,10 +8,10 @@ function removeExtraBlanks($text)
 { 
 	$text = trim($text); 
 	$words = explode(" ", $text); 
-	$text = ""; 
-	foreach ($words as $key => $value) 
+	$text = " "; 
+	foreach ($words as $value) 
 	{ 
-		if (strlen($value) > 0) 
+		if ($value !== '') 
 		{ 
 			$text .= $value . ' '; 
 		} 
