@@ -5,8 +5,7 @@ function getGETParameter($id)
 	return isset($_GET[$id]) ? (string) $_GET[$id] : null; 
 }
 function removeExtraBlanks($text)
-{ 
-	//$text = trim($text); 
+{  
 	$words = explode(" ", $text); 
 	$text = " "; 
 	foreach ($words as $value) 
