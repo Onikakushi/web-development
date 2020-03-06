@@ -6,10 +6,18 @@ function getGETParameter($key)
 }
 $id = getGETParameter('identifier');
 $space = ' ';
-$num = array('1'-'0');
-echo $ch;
+$num = array('1','2','3','4','6','7','8','9','0');
 $errSp = false;
+$errEmS = false;
 $errFNum = false;
+$errUnCh = false;
+foreach (str_split($id) as $value)
+{
+	if (((ord($value) > 1 and ord($value) < 48) or (ord($value) > 58 and ord($value) < 64) or (ord($value) > 90 and ord($value) <97) or ord($value) > 123) and ord($value) <> 32)
+    {
+    	$errUnCh = true;
+    } 
+}    	
 if (strpos($id, $space) !== false)
 {
 	$errSp = true;  
@@ -17,7 +25,11 @@ if (strpos($id, $space) !== false)
 $id = trim($id);
 $first = $id[0];
 $errFNum = in_array($first, $num);
-if(($errFNum == false) and ($errSp == false) and ($errUnCh == false))
+if (strlen($id) == 0)
+{
+	$errEmS = true;
+}
+if(($errFNum == false) && ($errSp == false) && ($errUnCh == false) && ($errEmS == false))
 {
 	echo 'YES';
 }
@@ -31,9 +43,13 @@ if ($errSp == true)
 }
 if ($errUnCh == true)
 {
-	echo 'встречаются запрещенные символы';
+	echo 'встречаются запрещенные символы'."\n";
 }
 if ($errFNum == true)
 {
-	echo 'число не может быть первым символом';
+	echo 'число не может быть первым символом'."\n";
+}
+if ($errEmS == true)
+{
+	echo 'поле identifier нужно заполнить'."\n";
 }
